@@ -1,23 +1,55 @@
-\documentclass[12pt]{article}
-\usepackage{natbib}
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/end_to_end_project/} }
+
+\title{Housing Price Prediction}
+\author{
+  Devendra Samatia\\
+  \texttt{15ucs037@lnmiit.ac.in}
+  \and
+  Vinay Jain\\
+  \texttt{15ucs055@lnmiit.ac.in}
+ \and
+  Divyanshu Jhawar\\
+  \texttt{15ucs040@lnmiit.ac.in}
+}
 
 \begin{document}
 
-\title{BibTeX in action}
-\author{Martin J. Osborne}
-\date{2008-1-13}
-
 \maketitle
+\section{Problem statement}
+We are needed to predict the price of house based on given features. 
 
-\section{Introduction}
-This document illustrates the use of BibTeX\@.  You may want to refer to
-\cite{ahu61} or \cite{ab94} or \cite{m85}.  Or you may want to cite a
-specific page in a reference, like this: see \citet[p.~199]{m85}.  Or
-perhaps you want to cite more than one paper by Maskin: \cite{m85, m99}.
-Or you want to make a parenthetical reference to one or more articles, in which case the \verb+\citealt+ command omits the parentheses around the year (\citealt{ahu61}).
+\section{Dataset}
+We took dataset from a github repository\cite{githubSolution}. The Dataset have 10 features and 20640 entries.
+The feratures are:
 
-\bibliographystyle{te}
+\begin{itemize}
+  	\item longitude
+ 	 \item	latitude	
+ 	\item housing median age	
+	\item total rooms	
+	 \item total bedrooms	
+ 	\item population	 
+	\item households	
+	\item median income	
+	\item median house value	
+	\item ocean proximity
+\end{itemize}
 
-\bibliography{research}
+\subsection{Issues with Dataset}
+At first glance we see two problems with the dataset. First one is that are 167 null valued entries for the total bedrooms column and second id that the ocean proximity is  not numerical which is not ideal for linear regression.
+To fix the first problem we replace the null entries with the median of the remaining entries of the column. As 167 is very small in comparision to 20640, it won't create much problem to add null values with median but if we drop the whole column we lose lot if important data. The second problem can be eliminated by using one hot encoder.
+
+\subsection{Exploring other features}
+
+If we look at the corelationship matrix 
+
+
+\medskip
+
+\bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\bibliography{References}
 
 \end{document}
